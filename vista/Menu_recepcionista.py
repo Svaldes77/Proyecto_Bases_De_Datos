@@ -3,7 +3,7 @@ import tkinter as tk
 class VistaRecepcionista:
     def __init__(self, controlador):
         self.controlador = controlador         
-        self.ventana = tk.Tk()
+        self.ventana = tk.Toplevel()
         self.ventana.title("Menu_Recepcionista")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f0f2f5")  # color claro neutro

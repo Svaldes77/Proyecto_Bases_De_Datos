@@ -17,8 +17,8 @@ class VistaAgendamientoCitas:
         self.ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
 
         # Icono
-        icono = tk.PhotoImage(file="files/Logo.png")
-        self.ventana.iconphoto(False, icono)
+        self.icono = tk.PhotoImage(file="files/Logo.png")
+        self.ventana.iconphoto(False, self.icono)
 
         # Título
         titulo = tk.Label(self.ventana, text="Agendamiento de Citas", font=("Segoe UI", 36, "bold"),
@@ -101,11 +101,10 @@ class VistaAgendamientoCitas:
 
     def volver_menu(self):
         self.ventana.destroy()
-        # Si tienes un método en el controlador para volver al menú, puedes llamarlo aquí:
-        # if self.controlador:
-        #     self.controlador.mostrar_menu_recepcionista()
+        
+        
 
-    # Métodos para abrir ventanas secundarias (puedes personalizar su contenido)
+    # Métodos para abrir ventanas secundarias 
     def abrir_ventana_tipo_consulta(self):
         ventana_tipo = tk.Toplevel(self.ventana)
         ventana_tipo.title("Seleccionar tipo de consulta")
