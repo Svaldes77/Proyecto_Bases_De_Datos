@@ -5,9 +5,22 @@ class VistaRecepcionista:
         self.controlador = controlador         
         self.ventana = tk.Tk()
         self.ventana.title("Menu_Recepcionista")
-        self.ventana.geometry("800x600")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f0f2f5")  # color claro neutro
+
+        # Tamaño de la ventana
+        ancho_ventana = 800
+        alto_ventana = 600
+
+        # Obtener tamaño de pantalla
+        ancho_pantalla = self.ventana.winfo_screenwidth()
+        alto_pantalla = self.ventana.winfo_screenheight()
+
+        # Calcular coordenadas para centrar
+        x = (ancho_pantalla // 2) - (ancho_ventana // 2)
+        y = (alto_pantalla // 2) - (alto_ventana // 2)
+
+        self.ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
 
         # Icono
         icono = tk.PhotoImage(file="files/Logo.png")
@@ -52,5 +65,3 @@ class VistaRecepcionista:
         for boton in (self.boton1, self.boton2, self.boton3):
             boton.bind("<Enter>", lambda e, b=boton: b.config(bg="#45a049"))
             boton.bind("<Leave>", lambda e, b=boton: b.config(bg="#4CAF50"))
-
-   
