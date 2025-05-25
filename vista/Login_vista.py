@@ -15,8 +15,8 @@ class Login_vista:
         self.ventana.configure(bg="white")
 
          #icono 
-        icono = tk.PhotoImage(file="files/Logo.png")
-        self.ventana.iconphoto(False, icono)
+        self.icono = tk.PhotoImage(file="files/Logo.png")
+        self.ventana.iconphoto(False, self.icono)
 
         # Título
         tk.Label(self.ventana, text="Sistema de Gestión Hospitalaria", font=("Arial", 24), bg="white").place(relx=0.5, rely=0.3, anchor="center")
@@ -24,8 +24,8 @@ class Login_vista:
         # Logo
         imagen_original = Image.open("files/Logo.png")
         imagen_redimensionada = imagen_original.resize((150, 150))
-        imagen_tk = ImageTk.PhotoImage(imagen_redimensionada)
-        label = tk.Label(self.ventana, image=imagen_tk,bg="white")
+        self.imagen_tk = ImageTk.PhotoImage(imagen_redimensionada)
+        label = tk.Label(self.ventana, image= self.imagen_tk,bg="white")
         label.place(relx=0.5, rely=0.15, anchor="center")  
         
 
@@ -55,7 +55,7 @@ class Login_vista:
         tk.Label(self.ventana, text="Paciente sin acceso, registrate aquí", font=("Arial", 10), bg="white").place(relx=0.6, rely=0.85, anchor="center")
         # Botón de registro
         tk.Button(self.ventana, text="Crear cuenta", command=self.ir_a_registro, font=("Arial",10)).place(relx=0.8, rely=0.85, anchor="center", width=100, height=25)   
-        self.ventana.mainloop()
+    
 
     def ir_a_registro(self):
         self.ventana.destroy()  # Cierra la ventana de login
@@ -77,4 +77,4 @@ class Login_vista:
         else:
             messagebox.showinfo("Éxito", f"Bienvenido, {id} ({rol})")
             self.controlador.continuar_con_rol(rol)
-            self.ventana.destroy()
+            # self.ventana.destroy()
