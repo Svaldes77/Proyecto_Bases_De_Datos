@@ -3,7 +3,7 @@ import tkinter as tk
 class VistaRecepcionista:
     def __init__(self, controlador):
         self.controlador = controlador         
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Tk()
         self.ventana.title("Menu_Recepcionista")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f0f2f5")  # color claro neutro
@@ -55,7 +55,7 @@ class VistaRecepcionista:
         self.boton1 = tk.Button(frame_botones, text="Agendamiento de Citas", command=self.controlador.abrir_ventana_agendamiento, **btn_style)
         self.boton1.pack(pady=15)
 
-        self.boton2 = tk.Button(frame_botones, text="Registrar llegada del Paciente", **btn_style)
+        self.boton2 = tk.Button(frame_botones, text="Registrar llegada del Paciente",command=self.controlador.registrar_llegada_paciente, **btn_style)
         self.boton2.pack(pady=15)
 
         self.boton3 = tk.Button(frame_botones, text="Atención sin cita Previa", **btn_style)
@@ -65,3 +65,4 @@ class VistaRecepcionista:
         for boton in (self.boton1, self.boton2, self.boton3):
             boton.bind("<Enter>", lambda e, b=boton: b.config(bg="#45a049"))
             boton.bind("<Leave>", lambda e, b=boton: b.config(bg="#4CAF50"))
+

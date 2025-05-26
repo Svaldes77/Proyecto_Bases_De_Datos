@@ -16,7 +16,7 @@ class ControladorLogin:
 
     def continuar_con_rol(self, rol):
         if rol == "Recepcionista":
-            self.vista.ventana.destroy()
+            # self.vista.ventana.destroy()
             controlador_recepcionista = ControladorRecepcionista()
             controlador_recepcionista.mostrar()
         elif rol == "Administrador":
