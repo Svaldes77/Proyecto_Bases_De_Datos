@@ -87,8 +87,27 @@ class VistaAtencionSinCita:
             height=1,
             command=self.asignar_cita
         )
-        self.btn_asignar.pack(pady=(20, 20))
+        self.btn_asignar.pack(pady=(20, 5))
         self.btn_asignar.pack_forget()  # Oculto hasta que se pulse el botón
+
+        # Botón Volver
+        self.btn_volver = tk.Button(
+            self.ventana,
+            text="Volver",
+            font=("Segoe UI", 14, "bold"),
+            bg="#e53e3e",
+            fg="white",
+            activebackground="#c53030",
+            activeforeground="white",
+            relief="flat",
+            padx=20,
+            pady=8,
+            width=10,
+            height=1,
+            command=self.volver_menu
+        )
+        self.btn_volver.pack(pady=(5, 20))
+        self.btn_volver.pack_forget()  # Oculto hasta que se pulse el botón
 
     def mostrar_tabla(self):
         # Oculta el logo al mostrar la tabla
@@ -107,7 +126,8 @@ class VistaAtencionSinCita:
             self.tabla.insert("", "end", values=(medico, horario))
         self.label_medicos.pack(pady=(10, 10))
         self.frame_tabla.pack(pady=10, fill="both", expand=True)
-        self.btn_asignar.pack(pady=(20, 20))
+        self.btn_asignar.pack(pady=(20, 5))
+        self.btn_volver.pack(pady=(5, 20))  # Mostrar el botón Volver
 
     def asignar_cita(self):
         seleccion = self.tabla.selection()
@@ -116,6 +136,11 @@ class VistaAtencionSinCita:
         else:
             messagebox.showwarning("Atención", "Por favor selecciona un médico para asignar la cita.")
 
-if __name__ == "__main__":
-    VistaAtencionSinCita(None)
-    tk.mainloop()
+    def volver_menu(self):
+        self.ventana.destroy()
+        if self.controlador:
+            self.controlador.mostrar_menu_recepcionista()  # Asegúrate de tener este método en tu controlador
+
+# if __name__ == "__main__":
+#     VistaAtencionSinCita(None)
+#     tk.mainloop()

@@ -1,6 +1,7 @@
 from vista.Menu_recepcionista import VistaRecepcionista
 from vista.agendamiento_citas import VistaAgendamientoCitas
 from vista.registrar_llegada_paciente import VistaRegistrarLlegadaPaciente
+from vista.atencion_sin_cita import VistaAtencionSinCita
 
 class ControladorRecepcionista:
     def __init__(self):
@@ -18,6 +19,10 @@ class ControladorRecepcionista:
         self.vista.ventana.destroy()
         VistaRegistrarLlegadaPaciente(self)
 
+    def atencion_sin_cita(self):
+        self.vista.ventana.destroy()
+        VistaAtencionSinCita(self)
+        
     def volver_menu_recepcionista(self):
         self.vista.ventana.destroy()
         VistaRecepcionista(self)

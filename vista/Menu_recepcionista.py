@@ -58,7 +58,7 @@ class VistaRecepcionista:
         self.boton2 = tk.Button(frame_botones, text="Registrar llegada del Paciente",command=self.controlador.registrar_llegada_paciente, **btn_style)
         self.boton2.pack(pady=15)
 
-        self.boton3 = tk.Button(frame_botones, text="Atención sin cita Previa", **btn_style)
+        self.boton3 = tk.Button(frame_botones, text="Atención sin cita Previa", command=self.controlador.atencion_sin_cita,**btn_style)
         self.boton3.pack(pady=15)
 
         # Añadir efecto hover a botones
