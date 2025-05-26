@@ -7,12 +7,15 @@ from PIL import Image, ImageTk
 class Login_vista:
     def __init__(self, controlador):
         self.controlador = controlador
-
         self.ventana = tk.Tk()
         self.ventana.title("Login Hospitalario")
-        self.ventana.geometry("800x600")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="white")
+        # Centrar ventana
+        ancho_ventana, alto_ventana = 800, 600
+        x = (self.ventana.winfo_screenwidth() // 2) - (ancho_ventana // 2)
+        y = (self.ventana.winfo_screenheight() // 2) - (alto_ventana // 2)
+        self.ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
 
          #icono 
         self.icono = tk.PhotoImage(file="files/Logo.png")
