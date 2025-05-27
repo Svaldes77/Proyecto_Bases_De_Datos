@@ -9,7 +9,7 @@ from tkcalendar import DateEntry
 class Registro_vista:
     def __init__(self,controlador):
         self.controlador = controlador         
-        self.ventana = tk.Tk()
+        self.ventana = tk.Toplevel()
         self.ventana.title("Registro de Paciente")
         self.ventana.geometry("800x600")
         self.ventana.resizable(False, False)
