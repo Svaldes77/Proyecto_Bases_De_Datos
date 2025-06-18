@@ -15,8 +15,8 @@ class Login_vista:
         self.ventana.configure(bg="white")
 
          #icono 
-        icono = tk.PhotoImage(file="files/Logo.png")
-        self.ventana.iconphoto(False, icono)
+        self.icono = tk.PhotoImage(file="files/Logo.png")
+        self.ventana.iconphoto(False, self.icono)
 
         # Título
         tk.Label(self.ventana, text="Sistema de Gestión Hospitalaria", font=("Arial", 24), bg="white").place(relx=0.5, rely=0.3, anchor="center")
@@ -61,7 +61,7 @@ class Login_vista:
         self.ventana.destroy()  # Cierra la ventana de login
         self.controlador.mostrar_registro() 
 
-
+   
 
     def login(self):
         id = self.usuario_entry.get()
@@ -76,5 +76,9 @@ class Login_vista:
             messagebox.showerror("Error", f"El rol no coincide. Eres '{resultado}', no '{rol}'.")
         else:
             messagebox.showinfo("Éxito", f"Bienvenido, {id} ({rol})")
+            self.ventana.withdraw()  
             self.controlador.continuar_con_rol(rol)
-            self.ventana.destroy()
+
+         
+
+            

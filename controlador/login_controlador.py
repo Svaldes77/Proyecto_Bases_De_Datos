@@ -1,6 +1,7 @@
 from modelo.usuario import ModeloUsuarios
 from vista.Login_vista import Login_vista
 from vista.Registro_vista import Registro_vista 
+from controlador.Director_controlador import ControladorDirector 
 
 class ControladorLogin:
     def __init__(self):
@@ -20,7 +21,10 @@ class ControladorLogin:
         elif rol == "Paciente":
             print("Cargar menú de Paciente (GUI)")
         elif rol == "Director":
-            print("Cargar menú de Director (GUI)")
+            controlador_director = ControladorDirector()
+            controlador_director.mostrar()
 
     def mostrar_registro(self):
         Registro_vista(self)  
+
+
