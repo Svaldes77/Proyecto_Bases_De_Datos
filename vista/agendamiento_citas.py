@@ -5,7 +5,7 @@ from tkinter import ttk
 class VistaAgendamientoCitas:
     def __init__(self, controlador):
         self.controlador = controlador
-        self.ventana = tk.Tk()
+        self.ventana = tk.Toplevel()
         self.ventana.title("Agendamiento de Citas")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f7fafc")

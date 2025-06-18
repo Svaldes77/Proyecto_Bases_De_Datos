@@ -4,7 +4,7 @@ from tkinter import ttk, messagebox
 class VistaAtencionSinCita:
     def __init__(self, controlador):
         self.controlador = controlador
-        self.ventana = tk.Tk()
+        self.ventana = tk.Toplevel()
         self.ventana.title("Atención sin cita previa (Urgencia)")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f7fafc")
@@ -16,8 +16,8 @@ class VistaAtencionSinCita:
         self.ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
 
         # Icono ventana
-        icono = tk.PhotoImage(file="files/Logo.png")
-        self.ventana.iconphoto(False, icono)
+        self.icono = tk.PhotoImage(file="files/Logo.png")
+        self.ventana.iconphoto(False, self.icono)
 
         # Botón Disponibilidad
         self.btn_disponibilidad = tk.Button(

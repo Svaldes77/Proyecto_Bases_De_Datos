@@ -4,7 +4,7 @@ from tkinter import ttk, messagebox
 class VistaRegistrarLlegadaPaciente:
     def __init__(self, controlador):
         self.controlador = controlador
-        self.ventana = tk.Tk()
+        self.ventana = tk.Toplevel()
         self.ventana.title("Registrar Llegada del Paciente")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f0f2f5")
@@ -16,8 +16,8 @@ class VistaRegistrarLlegadaPaciente:
         self.ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
 
         # Icono
-        icono = tk.PhotoImage(file="files/Logo.png")
-        self.ventana.iconphoto(False, icono)
+        self.icono = tk.PhotoImage(file="files/Logo.png")
+        self.ventana.iconphoto(False, self.icono)
 
         # Título
         titulo = tk.Label(self.ventana, text="Registrar Llegada del Paciente", font=("Segoe UI", 24, "bold"), bg="#f0f2f5", fg="#333333")
