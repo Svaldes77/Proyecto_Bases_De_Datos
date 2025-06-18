@@ -22,7 +22,7 @@ class Registro_vista:
         tk.Label(self.ventana, 
                  text="Sistema de Gestión Hospitalaria", 
                  font=("Arial", 22), 
-                 bg="white").place(relx=0.15, 
+                 bg="white").place(relx=10.15, 
                                    rely=0.08)
         
         # imagenF

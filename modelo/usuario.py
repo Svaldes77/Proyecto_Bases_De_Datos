@@ -9,7 +9,7 @@ class ModeloUsuarios:
         # Datos simulados
         self.usuarios = [
             Usuario('001', "admin123", "Administrador"),
-            Usuario('002', "recep123", "Recepcionista"),
+            Usuario('002', "123", "Recepcionista"),
             Usuario('003', "pac123", "Paciente"),
             Usuario('004', "dir123", "Director")
         ]
