@@ -1,17 +1,12 @@
 from modelo.usuario import ModeloUsuarios
 from vista.Login_vista import Login_vista
-<<<<<<< HEAD
 from vista.Registro_vista import Registro_vista 
-<<<<<<< HEAD
 from controlador.Director_controlador import ControladorDirector 
-=======
 from controlador.recepcionista_controlador import ControladorRecepcionista
->>>>>>> origin/Svaldes
-=======
 from vista.Registro_vista import Registro_vista
 from vista.menu_admin import Admin_menu
 
->>>>>>> origin/jurluy
+
 
 class ControladorLogin:
     def __init__(self):

@@ -8,10 +8,10 @@ class ModeloUsuarios:
     def __init__(self):
         # Datos simulados
         self.usuarios = [
-            Usuario('001', "admin123", "Administrador"),
+            Usuario('001', "123", "Administrador"),
             Usuario('002', "123", "Recepcionista"),
             Usuario('003', "pac123", "Paciente"),
-            Usuario('004', "dir123", "Director")
+            Usuario('004', "12", "Director")
         ]
 
     def autenticar(self, id, contraseña):
