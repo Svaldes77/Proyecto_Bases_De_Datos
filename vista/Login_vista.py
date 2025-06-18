@@ -79,15 +79,12 @@ class Login_vista:
             messagebox.showerror("Error", f"El rol no coincide. Eres '{resultado}', no '{rol}'.")
         else:
             messagebox.showinfo("Éxito", f"Bienvenido, {id} ({rol})")
-<<<<<<< HEAD
             self.ventana.withdraw()  
             self.controlador.continuar_con_rol(rol)
 
          
 
             
-=======
             self.ventana.destroy()
             self.controlador.continuar_con_rol(rol)
            
->>>>>>> origin/Svaldes

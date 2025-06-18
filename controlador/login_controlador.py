@@ -1,11 +1,17 @@
 from modelo.usuario import ModeloUsuarios
 from vista.Login_vista import Login_vista
+<<<<<<< HEAD
 from vista.Registro_vista import Registro_vista 
 <<<<<<< HEAD
 from controlador.Director_controlador import ControladorDirector 
 =======
 from controlador.recepcionista_controlador import ControladorRecepcionista
 >>>>>>> origin/Svaldes
+=======
+from vista.Registro_vista import Registro_vista
+from vista.menu_admin import Admin_menu
+
+>>>>>>> origin/jurluy
 
 class ControladorLogin:
     def __init__(self):
@@ -24,7 +30,7 @@ class ControladorLogin:
             controlador_recepcionista = ControladorRecepcionista()
             controlador_recepcionista.mostrar()
         elif rol == "Administrador":
-            print("Cargar menú de Administrador (GUI)")
+            Admin_menu()
         elif rol == "Paciente":
             print("Cargar menú de Paciente (GUI)")
         elif rol == "Director":
