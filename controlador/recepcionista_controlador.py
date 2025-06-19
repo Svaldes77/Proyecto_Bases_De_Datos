@@ -5,11 +5,10 @@ from vista.atencion_sin_cita import VistaAtencionSinCita
 
 class ControladorRecepcionista:
     def __init__(self):
-        self.vista = VistaRecepcionista(self)
-
-    def mostrar(self):
-        # self.vista.ventana.mainloop()
         pass
+    
+    def mostrar(self):
+        self.vista = VistaRecepcionista(self)
 
     def abrir_ventana_agendamiento(self):
         self.vista.ventana.destroy()

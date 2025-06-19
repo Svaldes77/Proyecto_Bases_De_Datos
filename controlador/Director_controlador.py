@@ -1,4 +1,4 @@
-from vista.menu_director import Menu_director_vista
+from vista.Menu_director import Menu_director_vista
 from modelo.usuario import ModeloUsuarios
 from vista.Citas_pacientes_vista import VistaCitasPacientes
 from vista.Consolidado_vista import VistaConsolidado
