@@ -5,6 +5,7 @@ from controlador.Director_controlador import ControladorDirector
 from controlador.recepcionista_controlador import ControladorRecepcionista
 from vista.Registro_vista import Registro_vista
 from vista.menu_admin import Admin_menu
+from controlador.paciente_controlador import ControladorPaciente
 
 
 
@@ -27,12 +28,12 @@ class ControladorLogin:
         elif rol == "Administrador":
             Admin_menu()
         elif rol == "Paciente":
+            controlador_paciente = ControladorPaciente()
+            controlador_paciente.mostrar()
             print("Cargar menú de Paciente (GUI)")
         elif rol == "Director":
             controlador_director = ControladorDirector()
             controlador_director.mostrar()
 
     def mostrar_registro(self):
-        Registro_vista(self)  
-
-
+        Registro_vista(self)
