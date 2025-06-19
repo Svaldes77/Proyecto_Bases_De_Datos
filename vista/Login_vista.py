@@ -2,12 +2,14 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+from vista.Utils import configurar_cierre_global
 
 
 class Login_vista:
-    def __init__(self, controlador):
+    def __init__(self, controlador,root):
         self.controlador = controlador
-        self.ventana = tk.Tk()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root) 
         self.ventana.title("Login Hospitalario")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="white")
@@ -80,11 +82,5 @@ class Login_vista:
         else:
             messagebox.showinfo("Éxito", f"Bienvenido, {id} ({rol})")
             self.ventana.withdraw()  
-            self.controlador.continuar_con_rol(rol)
-
-         
-
-            
-            self.ventana.destroy()
-            self.controlador.continuar_con_rol(rol)
+            self.controlador.continuar_con_rol(rol) 
            

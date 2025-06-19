@@ -1,11 +1,12 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-
-class MenuPacienteVista:
-    def __init__(self, controlador):
+from vista.Utils import configurar_cierre_global
+ 
+class Menu_paciente_vista:
+    def __init__(self, controlador, root):
         self.controlador = controlador
-
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)
         self.ventana.title("Menú Paciente")
         self.ventana.geometry("800x600")
         self.ventana.resizable(False, False)

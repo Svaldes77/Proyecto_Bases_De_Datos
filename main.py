@@ -1,12 +1,14 @@
-from controlador.login_controlador  import ControladorLogin
+from controlador.Login_controlador  import Controlador_login
 #FINAL 
-def main():
-    app = ControladorLogin()
-    app.iniciar()
+import tkinter as tk
 
 
 if __name__ == "__main__":
-    main()
+    root = tk.Tk()
+    root.withdraw() 
+ # Oculta la raíz
+    Controlador_login(root)
+    root.mainloop()
     
 
 

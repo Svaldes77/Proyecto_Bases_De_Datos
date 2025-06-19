@@ -1,11 +1,13 @@
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
+from vista.Utils import configurar_cierre_global 
 
-class VistaCitasPacientes:
-    def __init__(self,controlador):
+class Vista_citas_paciente:
+    def __init__(self,controlador,root):
         self.controlador = controlador         
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root) 
         self.ventana.title("Citas de Pacientes")
         self.ventana.geometry("800x600")
         self.ventana.resizable(False, False)

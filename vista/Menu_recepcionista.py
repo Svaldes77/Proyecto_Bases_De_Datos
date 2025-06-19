@@ -1,9 +1,10 @@
 import tkinter as tk
-
-class VistaRecepcionista:
-    def __init__(self, controlador):
+from vista.Utils import configurar_cierre_global 
+class Menu_recepcionista_vista:
+    def __init__(self, controlador,root):
         self.controlador = controlador         
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)  # Configura el cierre global
         self.ventana.title("Menu_Recepcionista")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f0f2f5")  # color claro neutro

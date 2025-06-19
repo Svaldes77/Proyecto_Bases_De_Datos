@@ -2,11 +2,12 @@ import tkinter as tk
 from PIL import Image, ImageTk 
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
-class VistaEstadisticas:
-    def __init__(self,controlador):
+from vista.Utils import configurar_cierre_global
+class Vista_estadisticas:
+    def __init__(self,controlador,root):
         self.controlador = controlador         
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)
         self.ventana.title("Estadísticas")
         self.ventana.geometry("1000x700")
         self.ventana.resizable(False, False)

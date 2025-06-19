@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import simpledialog, messagebox
-
-class ModificarTarifas_vista:
-    def __init__(self):
-        self.ventana = tk.Toplevel()
+from vista.Utils import configurar_cierre_global 
+class Modificar_tarifas_vista:
+    def __init__(self,controlador, root):
+        self.controlador = controlador
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)  # Configura el cierre global
         self.ventana.title("Modificar Tarifas")
         self.ventana.geometry("800x600")
         self.ventana.configure(bg="white")

@@ -4,11 +4,12 @@ from PIL import Image, ImageTk
 from tkcalendar import DateEntry
 import calendar
 from tkinter import messagebox 
-
-class VistaConsolidado:
-    def __init__(self, controlador):
+from vista.Utils import configurar_cierre_global
+class Vista_consolidado:
+    def __init__(self, controlador,root):
         self.controlador = controlador         
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)  # Configura el cierre global
         self.ventana.title("Consolidado de Servicios")
         self.ventana.geometry("800x600")
         self.ventana.resizable(False, False)

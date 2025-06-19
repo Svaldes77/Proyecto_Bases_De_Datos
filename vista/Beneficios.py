@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import simpledialog, messagebox
-
+from vista.Utils import configurar_cierre_global
 class Beneficios_vista:
-    def __init__(self):
-        self.ventana = tk.Toplevel()
+    def __init__(self,controlador, root):
+        self.ventana = tk.Toplevel(root)
+        self.controlador = controlador 
+        configurar_cierre_global(self.ventana, root)
         self.ventana.title("Pantalla beneficios")
         self.ventana.geometry("800x600")
         self.ventana.configure(bg="white")

@@ -1,11 +1,12 @@
 import tkinter as tk
 from tkcalendar import DateEntry
 from tkinter import ttk
-
-class VistaAgendamientoCitas:
-    def __init__(self, controlador):
+from vista.Utils import configurar_cierre_global
+class Vista_agendamiento_citas:
+    def __init__(self, controlador, root):
         self.controlador = controlador
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)
         self.ventana.title("Agendamiento de Citas")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f7fafc")

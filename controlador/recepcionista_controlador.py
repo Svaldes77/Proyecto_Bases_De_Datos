@@ -1,30 +1,27 @@
-from vista.Menu_recepcionista import VistaRecepcionista
-from vista.agendamiento_citas import VistaAgendamientoCitas
-from vista.registrar_llegada_paciente import VistaRegistrarLlegadaPaciente
-from vista.atencion_sin_cita import VistaAtencionSinCita
+from vista.Menu_recepcionista import  Menu_recepcionista_vista
+from vista.Agendamiento_citas import  Vista_agendamiento_citas
+from vista.Registrar_llegada_paciente import Registrar_llegada_paciente_vista
+from vista.atencion_sin_cita import Vista_atencion_sin_cita
 
-class ControladorRecepcionista:
-    def __init__(self):
-        pass
-    
+class Controlador_recepcionista:
+    def __init__(self,root):
+        self.root = root
+
     def mostrar(self):
-        self.vista = VistaRecepcionista(self)
+        self.vista = Menu_recepcionista_vista(self, self.root)
 
     def abrir_ventana_agendamiento(self):
         self.vista.ventana.destroy()
-        VistaAgendamientoCitas(self)
+        Vista_agendamiento_citas(self, self.root)
 
     def registrar_llegada_paciente(self):
         self.vista.ventana.destroy()
-        VistaRegistrarLlegadaPaciente(self)
+        Registrar_llegada_paciente_vista(self, self.root)
 
     def atencion_sin_cita(self):
         self.vista.ventana.destroy()
-        VistaAtencionSinCita(self)
-        
+        Vista_atencion_sin_cita(self, self.root)
+
     def volver_menu_recepcionista(self):
         self.vista.ventana.destroy()
-        VistaRecepcionista(self)
-        
-
-    
+        Menu_recepcionista_vista(self, self.root)

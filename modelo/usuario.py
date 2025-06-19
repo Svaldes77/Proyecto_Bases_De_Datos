@@ -4,7 +4,7 @@ class Usuario:
         self.contraseña = contraseña
         self.rol = rol
 
-class ModeloUsuarios:
+class Modelo_usuarios:
     def __init__(self):
         # Datos simulados
         self.usuarios = [

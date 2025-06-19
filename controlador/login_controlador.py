@@ -1,21 +1,21 @@
-from modelo.usuario import ModeloUsuarios
+from modelo.Usuario import Modelo_usuarios
 from vista.Login_vista import Login_vista
 from vista.Registro_vista import Registro_vista 
-from controlador.Director_controlador import ControladorDirector 
-from controlador.recepcionista_controlador import ControladorRecepcionista
+from controlador.Director_controlador import Controlador_director 
+from controlador.Recepcionista_controlador import Controlador_recepcionista
 from vista.Registro_vista import Registro_vista
-from vista.menu_admin import Admin_menu
-from controlador.paciente_controlador import ControladorPaciente
+from vista.Menu_administrador import Menu_administrador_vista
+from controlador.Paciente_controlador import Controlador_paciente
+from controlador.Administrador_controlador import Controlador_administrador 
 
 
 
-class ControladorLogin:
-    def __init__(self):
-        self.modelo = ModeloUsuarios()
-        self.vista = Login_vista(self)
+class Controlador_login:
+    def __init__(self,root):
+        self.root = root 
+        self.modelo = Modelo_usuarios()
+        self.vista = Login_vista(self,root)
 
-    def iniciar(self):
-        self.vista.ventana.mainloop()
 
     def autenticar(self, id, contraseña):
         return self.modelo.autenticar(id, contraseña)
@@ -23,17 +23,17 @@ class ControladorLogin:
     def continuar_con_rol(self, rol):
         if rol == "Recepcionista":
             # self.vista.ventana.destroy()
-            controlador_recepcionista = ControladorRecepcionista()
+            controlador_recepcionista = Controlador_recepcionista(self.root)
             controlador_recepcionista.mostrar()
         elif rol == "Administrador":
-            Admin_menu()
+            controlador_administrador = Controlador_administrador(self.root)
+            controlador_administrador.mostrar()
         elif rol == "Paciente":
-            controlador_paciente = ControladorPaciente()
+            controlador_paciente = Controlador_paciente(self.root)
             controlador_paciente.mostrar()
-            print("Cargar menú de Paciente (GUI)")
         elif rol == "Director":
-            controlador_director = ControladorDirector()
+            controlador_director = Controlador_director(self.root)
             controlador_director.mostrar()
 
     def mostrar_registro(self):
-        Registro_vista(self)
+        Registro_vista(self, self.root)

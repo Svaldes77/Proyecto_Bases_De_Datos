@@ -4,13 +4,15 @@ from PIL import Image, ImageTk
 from tkinter import ttk
 from tkinter import messagebox
 from tkcalendar import DateEntry 
+from vista.Utils import configurar_cierre_global 
 
 
 
 class Menu_director_vista:
-    def __init__(self,controlador):
+    def __init__(self,controlador,root):
         self.controlador = controlador        
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)  # Configura el cierre global
         self.ventana.title("Menu director")
         self.ventana.geometry("800x600")
         self.ventana.resizable(False, False)

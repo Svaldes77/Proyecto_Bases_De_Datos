@@ -1,10 +1,11 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-
-class VistaAtencionSinCita:
-    def __init__(self, controlador):
+from vista.Utils import configurar_cierre_global
+class Vista_atencion_sin_cita:
+    def __init__(self, controlador, root):
         self.controlador = controlador
-        self.ventana = tk.Toplevel()
+        self.ventana = tk.Toplevel(root)
+        configurar_cierre_global(self.ventana, root)  # Configurar cierre global
         self.ventana.title("Atención sin cita previa (Urgencia)")
         self.ventana.resizable(False, False)
         self.ventana.configure(bg="#f7fafc")

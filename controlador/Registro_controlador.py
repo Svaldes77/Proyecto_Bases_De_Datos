@@ -1,14 +1,15 @@
 from vista.Registro_vista import Registro_vista
-from modelo.usuario import ModeloUsuarios
+from modelo.Usuario import Modelo_usuarios
  # si ya lo tienes, si no, lo creamos después
 
-class ControladorRegistro:
+class Controlador_registro:
 
-    def __init__(self):
-        self.modelo = ModeloUsuarios()
+    def __init__(self,root):
+        self.modelo = Modelo_usuarios()
+        self.root = root
 
     def iniciar(self):
-        Registro_vista(self)
+        Registro_vista(self, self.root)
 
     def registrar_paciente(self, nombre, cedula, correo, contraseña):
         # Validaciones básicas (opcional)
