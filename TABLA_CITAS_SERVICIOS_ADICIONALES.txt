@@ -1,0 +1,13 @@
+-- Detalle de servicios por cita
+CREATE TABLE citas_servicios_adicionales (
+    id_detalle SERIAL PRIMARY KEY,
+    id_cita INTEGER NOT NULL,
+    id_servicio CHAR(5) NOT NULL,
+    cantidad INTEGER DEFAULT 1,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    subtotal DECIMAL(10,2) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (id_cita) REFERENCES citas(id_cita) ON DELETE CASCADE,
+    FOREIGN KEY (id_servicio) REFERENCES servicios_adicionales(id_servicio)
+);

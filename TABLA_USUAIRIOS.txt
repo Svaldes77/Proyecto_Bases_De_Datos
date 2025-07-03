@@ -1,0 +1,9 @@
+CREATE TABLE usuarios (
+    -- Solo 3 campos esenciales para autenticación
+    id_usuario VARCHAR(50) PRIMARY KEY,
+    contrasena VARCHAR(255) NOT NULL,
+    rol VARCHAR(50) NOT NULL,
+    
+    -- Validaciones
+    CONSTRAINT usuarios_rol_check CHECK (rol IN ('Paciente', 'Recepcionista', 'Director', 'Administrador'))
+);

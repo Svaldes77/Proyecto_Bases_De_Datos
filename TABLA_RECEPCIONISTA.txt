@@ -1,0 +1,36 @@
+--PASO 1
+-- Crear tipo ENUM para turnos de trabajo (si no existe)
+CREATE TYPE turno_trabajo AS ENUM ('Mañana', 'Tarde', 'Noche');
+
+-- ===================================================================
+-- TABLA RECEPCIONISTAS - DATOS ESPECÍFICOS DEL PERSONAL
+-- ===================================================================
+
+--PASO 2
+CREATE TABLE recepcionistas (
+    -- Cédula = ID del formulario = id_usuario para login (EXACTAMENTE IGUAL QUE PACIENTES)
+    cedula VARCHAR(50) PRIMARY KEY,
+    
+    -- Datos específicos según modelo Recepcionista.py
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) DEFAULT '',
+    email VARCHAR(150) DEFAULT '',
+    turno turno_trabajo NOT NULL,  -- USANDO EL TIPO ENUM DEFINIDO
+    activo BOOLEAN DEFAULT TRUE,
+    
+    -- Campos adicionales para gestión hospitalaria
+    fecha_contratacion DATE DEFAULT CURRENT_DATE,
+    
+    -- Relación directa con usuarios (EXACTAMENTE IGUAL QUE PACIENTES)
+    CONSTRAINT fk_recepcionistas_usuarios FOREIGN KEY (cedula) 
+        REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
+
+--PASO 3
+INSERT INTO recepcionistas (cedula, nombre, apellido, telefono, email, turno, fecha_contratacion) VALUES
+('66789001', 'Ana María', 'Sánchez López', '3001234567', 'ana.sanchez@saludvital.com', 'Mañana', '2023-01-15'),
+('1005873002', 'Patricia Elena', 'Ruiz Morales', '3002345678', 'patricia.ruiz@saludvital.com', 'Tarde', '2023-03-10'),
+('16228902', 'Carlos Eduardo', 'Morales Castro', '3003456789', 'carlos.morales@saludvital.com', 'Noche', '2023-05-20'),
+('16241356', 'Liliana', 'Castro Herrera', '3004567890', 'liliana.castro@saludvital.com', 'Mañana', '2023-07-12'),
+('1004768905', 'Jorge Luis', 'Herrera Vargas', '3005678901', 'jorge.herrera@saludvital.com', 'Tarde', '2023-09-05');

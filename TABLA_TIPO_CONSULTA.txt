@@ -1,0 +1,16 @@
+--PASO1
+-- Tipos de consulta
+CREATE TABLE tipos_consulta (
+    id_tipo_consulta CHAR(5) PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    precio_base DECIMAL(10,2) NOT NULL,
+    activo BOOLEAN DEFAULT TRUE,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--PASO2
+INSERT INTO tipos_consulta VALUES
+('TC001', 'General', 'Consulta médica general', 25000.00, TRUE, NOW()),
+('TC002', 'Especialista', 'Consulta con médico especialista', 45000.00, TRUE, NOW()),
+('TC003', 'Urgencias', 'Atención médica de urgencias', 75000.00, TRUE, NOW());

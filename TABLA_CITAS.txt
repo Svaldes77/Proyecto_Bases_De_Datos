@@ -1,0 +1,28 @@
+--PASO 1
+-- Tipos para citas
+CREATE TYPE estado_cita AS ENUM ('Pendiente', 'Confirmada', 'En_Proceso', 'Completada', 'Cancelada');
+
+
+--PASO 2
+CREATE TABLE citas (
+    id_cita SERIAL PRIMARY KEY,
+    cedula_paciente VARCHAR(50) NOT NULL,  -- Referencia a pacientes.cedula
+    id_medico VARCHAR(10) NOT NULL,  -- Corregido: debe coincidir con medicos.id_medico
+    id_tipo_consulta CHAR(5) NOT NULL,
+    id_aseguradora CHAR(6),
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    estado estado_cita DEFAULT 'Pendiente',
+    costo_consulta DECIMAL(10,2) NOT NULL,
+    descuento_aplicado DECIMAL(10,2) DEFAULT 0.00,
+    costo_servicios_adicionales DECIMAL(10,2) DEFAULT 0.00,
+    total_neto DECIMAL(10,2) NOT NULL,
+    observaciones TEXT,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (cedula_paciente) REFERENCES pacientes(cedula) ON DELETE CASCADE,
+    FOREIGN KEY (id_medico) REFERENCES medicos(id_medico) ON DELETE CASCADE,
+    FOREIGN KEY (id_tipo_consulta) REFERENCES tipos_consulta(id_tipo_consulta),
+    FOREIGN KEY (id_aseguradora) REFERENCES aseguradoras(id_aseguradora)
+);

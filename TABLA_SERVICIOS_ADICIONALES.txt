@@ -1,0 +1,29 @@
+
+--PASO 1
+-- Tipos para servicios adicionales
+CREATE TYPE categoria_servicio AS ENUM ('laboratorio', 'imagenes', 'terapia', 'prevencion', 'cardiologia', 'procedimientos');
+
+--PASO 2
+-- Servicios adicionales
+CREATE TABLE servicios_adicionales (
+    id_servicio CHAR(5) PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    categoria categoria_servicio NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    descripcion TEXT,
+    activo BOOLEAN DEFAULT TRUE,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--PASO 3
+INSERT INTO servicios_adicionales VALUES
+('SA001', 'Examen de Laboratorio', 'laboratorio', 25000.00, 'Exámenes de laboratorio clínico', TRUE, NOW()),
+('SA002', 'Rayos X', 'imagenes', 45000.00, 'Radiografías diagnósticas', TRUE, NOW()),
+('SA003', 'Fisioterapia', 'terapia', 35000.00, 'Sesión de fisioterapia', TRUE, NOW()),
+('SA004', 'Vacunación', 'prevencion', 20000.00, 'Aplicación de vacunas', TRUE, NOW()),
+('SA005', 'Ecografía', 'imagenes', 65000.00, 'Ecografía diagnóstica', TRUE, NOW()),
+('SA006', 'Electrocardiograma', 'cardiologia', 30000.00, 'Electrocardiograma', TRUE, NOW()),
+('SA007', 'Análisis de Sangre Completo', 'laboratorio', 40000.00, 'Análisis completo de sangre', TRUE, NOW()),
+('SA008', 'Tomografía', 'imagenes', 180000.00, 'Tomografía computarizada', TRUE, NOW()),
+('SA009', 'Terapia Respiratoria', 'terapia', 45000.00, 'Terapia respiratoria especializada', TRUE, NOW()),
+('SA010', 'Curaciones', 'procedimientos', 15000.00, 'Curaciones menores', TRUE, NOW());

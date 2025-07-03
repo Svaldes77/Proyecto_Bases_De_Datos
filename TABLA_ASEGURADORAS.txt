@@ -1,0 +1,20 @@
+--PASO 1
+-- Tipos para aseguradoras
+CREATE TYPE tipo_convenio AS ENUM ('EPS', 'PARTICULAR', 'CONVENIO');
+
+--PASO 2
+-- Aseguradoras y convenios
+CREATE TABLE aseguradoras (
+    id_aseguradora CHAR(6) PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    tipo_convenio tipo_convenio NOT NULL,
+    porcentaje_descuento DECIMAL(5,2) DEFAULT 0.00,
+    activo BOOLEAN DEFAULT TRUE,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+--PASO 3
+INSERT INTO aseguradoras VALUES
+('ASG001', 'EPS Salud', 'EPS', 20.00, TRUE, NOW()),
+('ASG002', 'Convenio Empresarial', 'CONVENIO', 15.00, TRUE, NOW()),
+('ASG003', 'Particular', 'PARTICULAR', 0.00, TRUE, NOW());

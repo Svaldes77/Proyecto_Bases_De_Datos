@@ -1,0 +1,168 @@
+--PASO 1
+-- ===================================================================
+-- TABLA MEDICOS - DATOS DE LOS MÉDICOS DEL HOSPITAL
+-- ===================================================================
+CREATE TABLE medicos (
+    -- ID del médico según modelo medico.py
+    id_medico VARCHAR(10) PRIMARY KEY,
+    
+    -- Datos específicos según modelo/medico.py -> clase Medico
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    numero_licencia VARCHAR(50) NOT NULL UNIQUE,
+    telefono VARCHAR(20) DEFAULT '',
+    email VARCHAR(150) DEFAULT '',
+    disponible BOOLEAN DEFAULT TRUE,
+    
+    -- Horarios de trabajo
+    horario_inicio TIME DEFAULT '08:00:00',
+    horario_fin TIME DEFAULT '17:00:00',
+    
+    -- Relación con especialidades (ahora referencia el ID numérico)
+    id_especialidad INTEGER NOT NULL,
+    
+    -- Campos adicionales para gestión
+    fecha_contratacion DATE DEFAULT CURRENT_DATE,
+    activo BOOLEAN DEFAULT TRUE,
+    
+    -- Relaciones
+    CONSTRAINT fk_medicos_especialidades FOREIGN KEY (id_especialidad) 
+        REFERENCES especialidades(id_especialidad) ON DELETE RESTRICT,
+    
+    -- Validaciones
+    CONSTRAINT medicos_licencia_check CHECK (LENGTH(numero_licencia) >= 3),
+    CONSTRAINT medicos_horario_check CHECK (horario_inicio < horario_fin)
+);
+
+
+---PASO 2
+INSERT INTO medicos (
+    id_medico, 
+    nombre, 
+    apellido, 
+    id_especialidad, 
+    numero_licencia, 
+    telefono, 
+    email, 
+    disponible,
+    horario_inicio,
+    horario_fin,
+    fecha_contratacion,
+    activo
+) VALUES
+-- Médicos de Medicina General (id_especialidad = 1)
+(
+    'MED001',
+    'Carlos',
+    'Pérez',
+    1,
+    'LIC001',
+    '555-0101',
+    'c.perez@saludvital.com',
+    TRUE,
+    '08:00:00',
+    '17:00:00',
+    '2023-01-15',
+    TRUE
+),
+(
+    'MED002',
+    'Roberto',
+    'Silva',
+    1,
+    'LIC002',
+    '555-0102',
+    'r.silva@saludvital.com',
+    TRUE,
+    '09:00:00',
+    '18:00:00',
+    '2023-02-10',
+    TRUE
+),
+-- Médicos de Pediatría (id_especialidad = 2)
+(
+    'MED003',
+    'María',
+    'Gómez',
+    2,
+    'LIC003',
+    '555-0103',
+    'm.gomez@saludvital.com',
+    TRUE,
+    '08:00:00',
+    '17:00:00',
+    '2023-03-05',
+    TRUE
+),
+(
+    'MED004',
+    'Santiago',
+    'Hernández',
+    2,
+    'LIC004',
+    '555-0104',
+    's.hernandez@saludvital.com',
+    TRUE,
+    '07:00:00',
+    '16:00:00',
+    '2023-04-12',
+    TRUE
+),
+-- Médicos de Cardiología (id_especialidad = 3)
+(
+    'MED005',
+    'José',
+    'Ramírez',
+    3,
+    'LIC005',
+    '555-0105',
+    'j.ramirez@saludvital.com',
+    TRUE,
+    '08:00:00',
+    '17:00:00',
+    '2023-05-20',
+    TRUE
+),
+(
+    'MED006',
+    'Ana Patricia',
+    'López',
+    3,
+    'LIC006',
+    '555-0106',
+    'a.lopez@saludvital.com',
+    TRUE,
+    '10:00:00',
+    '19:00:00',
+    '2023-06-08',
+    TRUE
+),
+-- Médicos de Dermatología (id_especialidad = 4)
+(
+    'MED007',
+    'Ana',
+    'Torres',
+    4,
+    'LIC007',
+    '555-0107',
+    'a.torres@saludvital.com',
+    TRUE,
+    '09:00:00',
+    '18:00:00',
+    '2023-07-15',
+    TRUE
+),
+(
+    'MED008',
+    'Luis Fernando',
+    'Martín',
+    4,
+    'LIC008',
+    '555-0108',
+    'l.martin@saludvital.com',
+    TRUE,
+    '08:00:00',
+    '17:00:00',
+    '2023-08-03',
+    TRUE
+);

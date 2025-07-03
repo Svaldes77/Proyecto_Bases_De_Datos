@@ -1,0 +1,31 @@
+--PASO 1
+-- Tipos para facturación
+CREATE TYPE estado_factura AS ENUM ('Pendiente', 'Pagada', 'Vencida', 'Anulada');
+
+--PASO 2
+CREATE TYPE metodo_pago AS ENUM ('Efectivo', 'Tarjeta', 'Transferencia', 'Cheque');
+
+--PASO 3
+CREATE TYPE tipo_item_factura AS ENUM ('CONSULTA', 'SERVICIO_ADICIONAL');
+
+--PASO 4
+-- Facturas
+CREATE TABLE facturas (
+    id_factura SERIAL PRIMARY KEY,
+    numero_factura VARCHAR(20) UNIQUE NOT NULL,
+    id_cita INTEGER NOT NULL,
+    cedula_paciente VARCHAR(50) NOT NULL,  -- Referencia a pacientes.cedula
+    fecha_emision TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    subtotal_consulta DECIMAL(10,2) NOT NULL,
+    subtotal_servicios DECIMAL(10,2) DEFAULT 0.00,
+    descuentos_aplicados DECIMAL(10,2) DEFAULT 0.00,
+    total_bruto DECIMAL(10,2) NOT NULL,
+    total_neto DECIMAL(10,2) NOT NULL,
+    estado estado_factura DEFAULT 'Pendiente',
+    metodo_pago metodo_pago NULL,
+    fecha_pago TIMESTAMP NULL,
+    observaciones TEXT,
+    
+    FOREIGN KEY (id_cita) REFERENCES citas(id_cita),
+    FOREIGN KEY (cedula_paciente) REFERENCES pacientes(cedula)
+);

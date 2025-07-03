@@ -1,0 +1,13 @@
+-- Detalle de facturación
+CREATE TABLE facturas_detalle (
+    id_detalle_factura SERIAL PRIMARY KEY,
+    id_factura INTEGER NOT NULL,
+    tipo_item tipo_item_factura NOT NULL,
+    descripcion VARCHAR(200) NOT NULL,
+    cantidad INTEGER DEFAULT 1,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    descuento DECIMAL(10,2) DEFAULT 0.00,
+    subtotal DECIMAL(10,2) NOT NULL,
+    
+    FOREIGN KEY (id_factura) REFERENCES facturas(id_factura) ON DELETE CASCADE
+);

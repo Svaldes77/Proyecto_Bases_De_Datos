@@ -1,0 +1,22 @@
+CREATE TABLE pacientes (
+    -- Cédula = ID del formulario = id_usuario para login
+    cedula VARCHAR(50) PRIMARY KEY,
+    
+    -- Datos exactos del formulario de registro
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    correo VARCHAR(150),
+    telefono VARCHAR(20),
+    fecha_nacimiento DATE,
+    genero VARCHAR(20) CHECK (genero IN ('Femenino', 'Masculino', 'Otro')),
+    
+    -- Campos adicionales de negocio
+    categoria_paciente VARCHAR(10) DEFAULT 'CAT002',
+    id_aseguradora VARCHAR(10) NULL,
+    deuda DECIMAL(10,2) DEFAULT 0.00,
+    activo BOOLEAN DEFAULT TRUE,
+    
+    -- Relación directa con usuarios
+    CONSTRAINT fk_pacientes_usuarios FOREIGN KEY (cedula) 
+        REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
