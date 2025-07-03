@@ -1,7 +1,15 @@
-import tkinter as tk 
-from tkinter import ttk 
-from PIL import Image, ImageTk 
-import matplotlib.pyplot as plt
+import tkinter as tk
+from tkinter import ttk, messagebox
+from vista.image_utils import PIL_AVAILABLE, MATPLOTLIB_AVAILABLE
+
+if PIL_AVAILABLE:
+    from PIL import Image, ImageTk
+
+# Importar matplotlib de manera opcional
+if MATPLOTLIB_AVAILABLE:
+    import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 from vista.Utils import configurar_cierre_global
 class Vista_informe_servicios:
     def __init__(self,controlador,root):
@@ -57,6 +65,12 @@ class Vista_informe_servicios:
         boton_grafico.place(relx=0.15, rely=0.7)
 
     def mostrar_grafico(self, datos):
+        if not MATPLOTLIB_AVAILABLE:
+            tk.messagebox.showinfo("Información", 
+                                 "matplotlib no está instalado.\n"
+                                 "Para ver gráficos, instale: pip install matplotlib")
+            return
+            
         especialidades = [fila[0] for fila in datos]
         cantidades = [fila[1] for fila in datos]
         plt.figure(figsize=(8,5))

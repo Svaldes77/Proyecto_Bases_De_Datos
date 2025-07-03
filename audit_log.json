@@ -1,0 +1,102 @@
+[
+  {
+    "usuario_id": "003",
+    "accion": "LOGIN",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T20:46:28.921283",
+    "detalles": {
+      "timestamp": "login_exitoso"
+    }
+  },
+  {
+    "usuario_id": "003",
+    "accion": "ACCESS_ROLE",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T20:46:30.560344",
+    "detalles": {
+      "rol": "Paciente"
+    }
+  },
+  {
+    "usuario_id": "003",
+    "accion": "LOGIN",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T20:49:16.423186",
+    "detalles": {
+      "timestamp": "login_exitoso"
+    }
+  },
+  {
+    "usuario_id": "003",
+    "accion": "ACCESS_ROLE",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T20:49:20.390941",
+    "detalles": {
+      "rol": "Paciente"
+    }
+  },
+  {
+    "usuario_id": "003",
+    "accion": "LOGIN",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T20:52:16.327543",
+    "detalles": {
+      "timestamp": "login_exitoso"
+    }
+  },
+  {
+    "usuario_id": "003",
+    "accion": "ACCESS_ROLE",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T20:52:17.983843",
+    "detalles": {
+      "rol": "Paciente"
+    }
+  },
+  {
+    "usuario_id": "003",
+    "accion": "LOGIN",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T21:02:47.508582",
+    "detalles": {
+      "timestamp": "login_exitoso"
+    }
+  },
+  {
+    "usuario_id": "003",
+    "accion": "ACCESS_ROLE",
+    "entidad": "USUARIO",
+    "entidad_id": "003",
+    "timestamp": "2025-06-28T21:02:49.327362",
+    "detalles": {
+      "rol": "Paciente"
+    }
+  },
+  {
+    "usuario_id": "002",
+    "accion": "LOGIN",
+    "entidad": "USUARIO",
+    "entidad_id": "002",
+    "timestamp": "2025-06-28T21:08:46.758018",
+    "detalles": {
+      "timestamp": "login_exitoso"
+    }
+  },
+  {
+    "usuario_id": "002",
+    "accion": "ACCESS_ROLE",
+    "entidad": "USUARIO",
+    "entidad_id": "002",
+    "timestamp": "2025-06-28T21:08:48.551991",
+    "detalles": {
+      "rol": "Recepcionista"
+    }
+  }
+]

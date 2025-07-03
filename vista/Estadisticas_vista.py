@@ -1,7 +1,12 @@
-import tkinter as tk 
-from PIL import Image, ImageTk 
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import tkinter as tk
+from vista.image_utils import PIL_AVAILABLE, MATPLOTLIB_AVAILABLE
+
+if PIL_AVAILABLE:
+    from PIL import Image, ImageTk
+
+if MATPLOTLIB_AVAILABLE:
+    import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from vista.Utils import configurar_cierre_global
 class Vista_estadisticas:
     def __init__(self,controlador,root):

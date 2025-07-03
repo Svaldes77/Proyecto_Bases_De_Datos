@@ -1,7 +1,11 @@
 import tkinter as tk
-from tkcalendar import DateEntry
 from tkinter import ttk
+from vista.image_utils import TKCALENDAR_AVAILABLE
 from vista.Utils import configurar_cierre_global
+
+# Importar tkcalendar de manera opcional
+if TKCALENDAR_AVAILABLE:
+    from tkcalendar import DateEntry
 class Vista_agendamiento_citas:
     def __init__(self, controlador, root):
         self.controlador = controlador
@@ -52,8 +56,15 @@ class Vista_agendamiento_citas:
 
         # Fecha y hora
         frame_fecha_hora = tk.Frame(main_frame, bg="#f7fafc")
-        self.entry_fecha = DateEntry(frame_fecha_hora, font=("Segoe UI", 20), width=12, background='#3182ce',
-                                    foreground='white', borderwidth=2, date_pattern='yyyy-mm-dd')
+        
+        if TKCALENDAR_AVAILABLE:
+            self.entry_fecha = DateEntry(frame_fecha_hora, font=("Segoe UI", 20), width=12, background='#3182ce',
+                                        foreground='white', borderwidth=2, date_pattern='yyyy-mm-dd')
+        else:
+            # Fallback a Entry normal
+            self.entry_fecha = tk.Entry(frame_fecha_hora, font=("Segoe UI", 20), width=12)
+            self.entry_fecha.insert(0, "YYYY-MM-DD")
+            
         self.entry_fecha.pack(side="left")
         label_hora = tk.Label(frame_fecha_hora, text="Hora:", font=("Segoe UI", 20), bg="#f7fafc", fg="#2d3748")
         label_hora.pack(side="left", padx=(25, 8))

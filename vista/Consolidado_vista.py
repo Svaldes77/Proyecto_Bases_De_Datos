@@ -1,9 +1,14 @@
-import tkinter as tk
-from tkinter import ttk 
-from PIL import Image, ImageTk 
-from tkcalendar import DateEntry
-import calendar
+import tkinter as tk 
+from tkinter import ttk
 from tkinter import messagebox 
+import calendar
+from vista.image_utils import PIL_AVAILABLE, TKCALENDAR_AVAILABLE
+
+if PIL_AVAILABLE:
+    from PIL import Image, ImageTk
+
+if TKCALENDAR_AVAILABLE:
+    from tkcalendar import DateEntry 
 from vista.Utils import configurar_cierre_global
 class Vista_consolidado:
     def __init__(self, controlador,root):

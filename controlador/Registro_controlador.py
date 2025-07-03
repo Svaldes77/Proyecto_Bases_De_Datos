@@ -1,5 +1,5 @@
 from vista.Registro_vista import Registro_vista
-from modelo.Usuario import Modelo_usuarios
+from modelo.usuario import Modelo_usuarios
  # si ya lo tienes, si no, lo creamos después
 
 class Controlador_registro:
@@ -11,19 +11,34 @@ class Controlador_registro:
     def iniciar(self):
         Registro_vista(self, self.root)
 
-    def registrar_paciente(self, nombre, cedula, correo, contraseña):
-        # Validaciones básicas (opcional)
-        if not nombre or not cedula or not correo or not contraseña:
-            print("❌ Todos los campos son obligatorios.")
-            return
+    def registrar_paciente(self, nombre, apellido, identificacion, telefono, correo, contrasena, fecha_nacimiento, genero):
+        """Registra un nuevo paciente con validaciones"""
+        # Validaciones básicas adicionales en el controlador
+        if not nombre or not apellido or not identificacion or not correo or not contrasena:
+            raise ValueError("Todos los campos obligatorios deben estar llenos.")
 
-        # Aquí llamas al modelo para guardar (más adelante esto será con base de datos)
+        # Verificar si el usuario ya existe por identificación o correo
+        if self.modelo.verificar_usuario_existe(identificacion, correo):
+            raise ValueError("Ya existe un usuario con esta identificación o correo.")
+
+        # Crear el diccionario del paciente
         paciente = {
             "nombre": nombre,
-            "cedula": cedula,
+            "apellido": apellido,
+            "identificacion": identificacion,
+            "telefono": telefono,
             "correo": correo,
-            "contraseña": contraseña
+            "contrasena": contrasena,
+            "fecha_nacimiento": fecha_nacimiento,
+            "genero": genero,
+            "rol": "Paciente"
         }
-        print("✅ Paciente registrado:", paciente)
-
-        # Aquí podrías redirigir de nuevo al login (si quieres)
+        
+        # Guardar en el modelo (aquí es donde se conectaría con la base de datos)
+        resultado = self.modelo.registrar_usuario(paciente)
+        
+        if resultado:
+            print("✅ Paciente registrado exitosamente:", paciente["nombre"], paciente["apellido"])
+            return True
+        else:
+            raise ValueError("Error al registrar el paciente en la base de datos.")

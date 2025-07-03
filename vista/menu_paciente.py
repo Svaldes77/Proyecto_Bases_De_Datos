@@ -1,5 +1,5 @@
 import tkinter as tk
-from PIL import Image, ImageTk
+from vista.image_utils import create_logo_label
 from vista.Utils import configurar_cierre_global
  
 class Menu_paciente_vista:
@@ -22,13 +22,9 @@ class Menu_paciente_vista:
                  font=("Arial", 22), 
                  bg="white").place(relx=0.15, rely=0.08)
 
-        # Imagen
-        self.imagen_original = Image.open("files/Logo.png")
-        self.imagen_redimensionada = self.imagen_original.resize((75, 75))
-        self.imagen_tk = ImageTk.PhotoImage(self.imagen_redimensionada)
-        tk.Label(self.ventana, 
-                 image=self.imagen_tk,
-                 bg="white").place(relx=0.03, rely=0.05)
+        # Logo
+        logo_label = create_logo_label(self.ventana, size=(75, 75), bg="white")
+        logo_label.place(relx=0.03, rely=0.05)
 
         # Etiqueta de bienvenida
         tk.Label(self.ventana, 

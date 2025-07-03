@@ -1,5 +1,5 @@
-from vista.Menu_director import Menu_director_vista
-from modelo.Usuario import Modelo_usuarios
+from vista.menu_director import Menu_director_vista
+from modelo.usuario import Modelo_usuarios
 from vista.Citas_paciente_vista import Vista_citas_paciente
 from vista.Consolidado_vista import Vista_consolidado
 from vista.Estadisticas_vista import Vista_estadisticas

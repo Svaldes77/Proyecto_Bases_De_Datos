@@ -1,6 +1,6 @@
 from vista.Menu_recepcionista import  Menu_recepcionista_vista
-from vista.Agendamiento_citas import  Vista_agendamiento_citas
-from vista.Registrar_llegada_paciente import Registrar_llegada_paciente_vista
+from vista.agendamiento_citas import  Vista_agendamiento_citas
+from vista.registrar_llegada_paciente import Registrar_llegada_paciente_vista
 from vista.atencion_sin_cita import Vista_atencion_sin_cita
 
 class Controlador_recepcionista:

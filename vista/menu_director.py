@@ -1,10 +1,12 @@
 import tkinter as tk 
 from tkinter import ttk
-from PIL import Image, ImageTk
-from tkinter import ttk
 from tkinter import messagebox
-from tkcalendar import DateEntry 
 from vista.Utils import configurar_cierre_global 
+from vista.image_utils import PIL_AVAILABLE, TKCALENDAR_AVAILABLE, create_logo_label
+
+# Importar tkcalendar de manera opcional
+if TKCALENDAR_AVAILABLE:
+    from tkcalendar import DateEntry 
 
 
 
@@ -29,14 +31,9 @@ class Menu_director_vista:
                                    rely=0.08)
 
         
-        # imagenF
-        self.imagen_original = Image.open("files/Logo.png")
-        self.imagen_redimensionada = self.imagen_original.resize((75, 75))
-        self.imagen_tk = ImageTk.PhotoImage(self.imagen_redimensionada)
-        tk.Label(self.ventana, 
-                         image=self.imagen_tk,
-                         bg="white").place(relx=0.03, 
-                                           rely=0.05)
+        # Logo
+        logo_label = create_logo_label(self.ventana, size=(75, 75), bg="white")
+        logo_label.place(relx=0.03, rely=0.05)
         
         # Etiqueta de bienvenida
         tk.Label(self.ventana, 

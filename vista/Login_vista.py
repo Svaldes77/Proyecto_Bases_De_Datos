@@ -1,7 +1,14 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-from PIL import Image, ImageTk
+
+# Importar PIL de manera opcional
+try:
+    from PIL import Image, ImageTk
+    PIL_AVAILABLE = True
+except ImportError:
+    PIL_AVAILABLE = False
+
 from vista.Utils import configurar_cierre_global
 
 
@@ -19,19 +26,30 @@ class Login_vista:
         y = (self.ventana.winfo_screenheight() // 2) - (alto_ventana // 2)
         self.ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
 
-         #icono 
-        self.icono = tk.PhotoImage(file="files/Logo.png")
-        self.ventana.iconphoto(False, self.icono)
+        # Icono (opcional)
+        try:
+            self.icono = tk.PhotoImage(file="files/Logo.png")
+            self.ventana.iconphoto(False, self.icono)
+        except:
+            pass  # Si no existe el archivo o hay error, continuar sin icono
 
         # Título
         tk.Label(self.ventana, text="Sistema de Gestión Hospitalaria", font=("Arial", 24), bg="white").place(relx=0.5, rely=0.3, anchor="center")
         
-        # Logo
-        imagen_original = Image.open("files/Logo.png")
-        imagen_redimensionada = imagen_original.resize((150, 150))
-        self.imagen_tk = ImageTk.PhotoImage(imagen_redimensionada)
-        label = tk.Label(self.ventana, image= self.imagen_tk,bg="white")
-        label.place(relx=0.5, rely=0.15, anchor="center")  
+        # Logo (opcional)
+        if PIL_AVAILABLE:
+            try:
+                imagen_original = Image.open("files/Logo.png")
+                imagen_redimensionada = imagen_original.resize((150, 150))
+                self.imagen_tk = ImageTk.PhotoImage(imagen_redimensionada)
+                label = tk.Label(self.ventana, image=self.imagen_tk, bg="white")
+                label.place(relx=0.5, rely=0.15, anchor="center")
+            except:
+                # Si no se puede cargar la imagen, mostrar texto alternativo
+                tk.Label(self.ventana, text="🏥", font=("Arial", 48), bg="white").place(relx=0.5, rely=0.15, anchor="center")
+        else:
+            # Si PIL no está disponible, mostrar emoji o texto
+            tk.Label(self.ventana, text="🏥", font=("Arial", 48), bg="white").place(relx=0.5, rely=0.15, anchor="center")  
         
 
         # Usuario

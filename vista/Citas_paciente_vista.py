@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
-from PIL import Image, ImageTk
+from vista.image_utils import PIL_AVAILABLE, create_logo_label
 from vista.Utils import configurar_cierre_global 
+if PIL_AVAILABLE:
+    from PIL import Image, ImageTk 
 
 class Vista_citas_paciente:
     def __init__(self,controlador,root):
